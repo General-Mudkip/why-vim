@@ -15,6 +15,7 @@
     "clsx": "^2.1.1",
     "lucide": "^0.509.0",
     "lucide-react": "^0.509.0",
+    "motion": "^12.11.0",
     "next": "15.3.2",
     "react": "0.0.0-experimental-21fdf308-20250508",
     "react-dom": "0.0.0-experimental-21fdf308-20250508",

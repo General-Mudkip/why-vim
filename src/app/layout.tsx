@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { funnel, space, share, fira } from "@/lib/fonts";
-import { KeyPressProvider } from "@/components/KeyPressContext";
+import { KeyPressProvider } from "@/components/contexts/KeyPressContext";
 
 export const metadata: Metadata = {
   title: "Why Vim?",

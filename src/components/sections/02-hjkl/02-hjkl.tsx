@@ -1,10 +1,23 @@
+"use client"
 import { PressableKeyButton, PressableIconButton } from "@/components/button/pressable-button"
 import { Key } from "@/components/common/key"
+import { useSection } from "@/components/contexts/SectionContext";
+import { useInView } from "@/components/hooks/useInView";
 import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp } from "lucide-react"
+import { useEffect } from "react";
 
 export const HJKLSection = () => {
+	const { ref, isInView } = useInView(0.5);
+	const { currentSection, setCurrentSection } = useSection()
+
+	useEffect(() => {
+		if (isInView) {
+			setCurrentSection("02 - HJKL");
+		}
+	}, [isInView]);
+
 	return (
-		<section id="02-hjkl" className="flex font-share h-screen w-full gap-y-12 flex-col justify-center items-center">
+		<section ref={ref} id="02-hjkl" className="flex font-share h-screen w-full gap-y-12 flex-col justify-center items-center">
 			<p>
 				One of the primary goals of Vim is to reduce <a href="https://en.wikipedia.org/wiki/Touch_typing" target="_blank">finger travel distance</a>.
 				<br />

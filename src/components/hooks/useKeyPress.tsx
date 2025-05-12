@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useKeyPressContext } from "@/components/KeyPressContext";
+import { useKeyPressContext } from "@/components/contexts/KeyPressContext";
 
 export function useKeyPress(
 	targetKeys: string[],
