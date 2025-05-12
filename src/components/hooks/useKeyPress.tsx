@@ -17,7 +17,7 @@ export function useKeyPress(
 		if (setParentState) {
 			setParentState(targetedKeyIsPressed)
 		}
-	}, [pressedKeys, targetKeys, setParentState]);
+	}, [pressedKeys]);
 
 	return isPressed;
 }
