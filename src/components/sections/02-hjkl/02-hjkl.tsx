@@ -1,9 +1,18 @@
 import { PressableKeyButton, PressableIconButton } from "@/components/button/pressable-button"
+import { Key } from "@/components/common/key"
 import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp } from "lucide-react"
 
 export const HJKLSection = () => {
 	return (
-		<section id="02-hjkl" className="flex h-screen w-full gap-y-4 flex-col justify-center items-center">
+		<section id="02-hjkl" className="flex font-share h-screen w-full gap-y-4 flex-col justify-center items-center">
+			<p>
+				One of the primary goals of Vim is to reduce <a href="https://en.wikipedia.org/wiki/Touch_typing" target="_blank">finger travel distance</a>.
+				<br />
+				Instead of using arrow keys, which are very far from the home row,
+				<br />
+				We use the <Key label="H" />, <Key label="J" />, <Key label="K" />, and <Key label="L" /> keys.
+			</p>
+
 			<div className="flex flex-row gap-x-4">
 				<PressableKeyButton activatorKeys={["h", "ArrowLeft"]} displayKey="H" />
 				<PressableKeyButton activatorKeys={["j", "ArrowDown"]} displayKey="J" />

@@ -1,8 +1,8 @@
 import { HeroNextPageButtons } from "./next-page-buttons"
 
-export const HeroSection = () => {
+export const IntroSection = () => {
 	return (
-		<section id="01-hero" className="flex h-screen w-full flex-row items-center justify-between">
+		<section id="01-intro" className="flex h-screen w-full flex-row items-center justify-between">
 			<div className="max-w-fit">
 				<h1 className="font-space text-9xl font-bold text-nowrap italic">Why Vim?</h1>
 				<h3 className="pt-4 font-space text-3xl">

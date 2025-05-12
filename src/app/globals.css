@@ -138,3 +138,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+a {
+  @apply underline decoration-dashed underline-offset-4 hover:text-neutral-600 hover:decoration-solid hover:underline-offset-3
+}
