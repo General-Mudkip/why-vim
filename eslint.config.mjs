@@ -11,6 +11,17 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    // enable the plugin so we can tweak its rules
+    plugins: ["eslint-comments"],
+    rules: {
+      // turn off warnings about unused eslint-disable directives
+      "eslint-comments/no-unused-disable": "off",
+      // if you also see “no-unused-enable” or “no-unused-remark” errors:
+      "eslint-comments/no-unused-enable": "off",
+      "eslint-comments/no-unused-remark": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
