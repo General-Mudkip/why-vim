@@ -25,8 +25,9 @@ export const PressableKeyButton = ({ activatorKeys, displayKey, stateController,
 	return (
 		<div
 			className={cn(
-				"flex font-fira h-16 w-16 items-center justify-center border-2 border-black",
-				keyIsActive ? "bg-black text-white" : ""
+				"flex font-fira transition-all duration-100 rounded-sm h-13 w-13 items-center justify-center border-2 border-neutral-800 shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)]",
+				keyIsActive &&
+				"shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] bg-neutral-100 transform translate-y-0.5"
 			)}
 		>
 			{displayKey}
@@ -40,8 +41,9 @@ export const PressableIconButton = ({ activatorKeys, displayIcon, stateControlle
 	return (
 		<div
 			className={cn(
-				"flex h-16 w-16 items-center justify-center border-2 border-black",
-				keyIsActive ? "bg-black text-white" : ""
+				"flex transition-all duration-100 rounded-sm h-13 w-13 items-center justify-center border-2 border-neutral-800 shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)]",
+				keyIsActive &&
+				"shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] bg-neutral-100 transform translate-y-0.5"
 			)}
 		>
 			{displayIcon}

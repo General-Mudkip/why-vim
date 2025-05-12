@@ -9,11 +9,12 @@ export const Key = ({ label }: { label: string }) => {
 	return (
 		<span
 			className={cn(
-				"border-2 border-black px-1.5 py-0.5",
-				keyIsActive ? "bg-black text-white" : ""
+				"transition-all duration-100 rounded-sm px-1.5 py-0.5 border-2 border-neutral-800 shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)]",
+				keyIsActive &&
+				"shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] bg-neutral-200"
 			)}
 		>
 			{label}
-		</span>
+		</span >
 	)
 }
