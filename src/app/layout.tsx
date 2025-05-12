@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { funnel, space, share, fira } from "@/lib/fonts";
+import { KeyPressProvider } from "@/components/KeyPressContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,9 @@ export default function RootLayout({
       <body
         className={`${funnel.variable} ${space.variable} ${share.variable} ${fira.variable} antialiased`}
       >
-        {children}
+        <KeyPressProvider>
+          {children}
+        </KeyPressProvider>
       </body>
     </html>
   );
