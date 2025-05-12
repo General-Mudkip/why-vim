@@ -21,7 +21,8 @@ export const SectionLabel = () => {
 
 	return (
 		<motion.h1
-			className="fixed left-1/2 -translate-x-28 text-center px-4 py-2 top-5 font-mono z-50 rounded-3xl backdrop-blur-2xl"
+			className="fixed left-1/2 -translate-x-1/2 text-center px-4 py-2 top-5 font-mono z-50 rounded-3xl backdrop-blur-2xl"
+			initial={{ x: "-20%" }}
 			animate={headerControls}
 		>
 			{currentSection}
