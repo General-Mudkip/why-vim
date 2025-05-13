@@ -17,7 +17,6 @@ export const HJKLSection = () => {
 	const continueButtonControls = useAnimationControls();
 
 	const [hasPassedGoal, setHasPassedGoal] = useState(false)
-	const [hasContinued, setHasContinued] = useState(false)
 	const [continueButtonPressed, setContinueButtonPressed] = useState(false)
 
 	const targetKeys = useMemo(() => new Set(["h", "j", "k", "l"]), []);
@@ -61,29 +60,28 @@ export const HJKLSection = () => {
 	}, [hasPassedGoal, continueButtonControls]);
 
 	useEffect(() => {
-		if (hasPassedGoal && !hasContinued && continueButtonPressed) {
+		if (hasPassedGoal && isInView && continueButtonPressed) {
 			const nextSection = document.getElementById("03-time-game")
 			if (nextSection) {
 				nextSection.scrollIntoView({ behavior: "smooth" })
-				setHasContinued(true)
 			}
 		}
-	}, [continueButtonPressed, hasPassedGoal, hasContinued]);
+	}, [continueButtonPressed, hasPassedGoal, isInView]);
 
 	return (
-		<section ref={ref} id="02-hjkl" className="flex font-share h-screen w-full gap-y-12 flex-col justify-center items-center">
+		<section ref={ref} id="02-hjkl" className="flex h-screen w-full flex-col items-center justify-center gap-y-12 font-share">
 			<p>
 				One of the primary goals of Vim is to reduce <a href="https://en.wikipedia.org/wiki/Touch_typing" target="_blank">finger travel distance</a>.
 				<br />
-				Instead of using arrow keys, which are very far from the home row,
+				Instead of using arrow keys, which are very far from the <span className="font-bold">home row</span>,
 				<br />
 				We use the <PressableKeyButton activatorKeys={["h"]} displayKey="H" size={"key"} />, <PressableKeyButton activatorKeys={["j"]} displayKey="J" size={"key"} />, <PressableKeyButton activatorKeys={["k"]} displayKey="K" size={"key"} />, and <PressableKeyButton activatorKeys={["l"]} displayKey="L" size={"key"} />,
 				keys.
 			</p>
 
-			<div className="flex flex-col gap-y-4 items-center">
+			<div className="flex flex-col items-center gap-y-4">
 				<div className="flex flex-row gap-x-4">
-					<PressableKeyButton activatorKeys={["h", "ArrowLeft"]} displayKey="H" activatedVariant="success" live={isInView} />
+					<PressableKeyButton variant={"pulsing"} activatorKeys={["h", "ArrowLeft"]} displayKey="H" activatedVariant="success" live={isInView} />
 					<PressableKeyButton activatorKeys={["j", "ArrowDown"]} displayKey="J" activatedVariant="success" live={isInView} />
 					<PressableKeyButton activatorKeys={["k", "ArrowUp"]} displayKey="K" activatedVariant="success" live={isInView} />
 					<PressableKeyButton activatorKeys={["l", "ArrowRight"]} displayKey="L" activatedVariant="success" live={isInView} />
@@ -100,9 +98,9 @@ export const HJKLSection = () => {
 			</div>
 
 			<p>
-				Try mock typing something, and then moving your hand to the arrow keys.
+				If you&apos;re confused about why that wouldn&apos;t just enter the letters
 				<br />
-				Contrast that with using the <PressableKeyButton activatorKeys={["h"]} displayKey="H" size={"key"} />, <PressableKeyButton activatorKeys={["j"]} displayKey="J" size={"key"} />, <PressableKeyButton activatorKeys={["k"]} displayKey="K" size={"key"} />, and <PressableKeyButton activatorKeys={["l"]} displayKey="L" size={"key"} /> keys.
+				H, J, K, or L, we&apos;ll cover that soon!
 			</p>
 
 			<motion.div

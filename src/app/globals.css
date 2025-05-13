@@ -142,3 +142,19 @@
 a {
   @apply underline decoration-dashed underline-offset-4 hover:text-neutral-600 hover:decoration-solid hover:underline-offset-3 transition-all duration-200
 }
+
+@layer utilities {
+  @keyframes bg-pulse {
+    0%, 100% {
+      background-color: #e5e5e5;
+      scale: 108%
+    }
+    50% {
+      background-color: #fafafa;
+      scale: 98%
+    }
+  }
+  .animate-bg-pulse {
+    animation: bg-pulse 3s infinite;
+  }
+}

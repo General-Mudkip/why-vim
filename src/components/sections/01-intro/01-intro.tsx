@@ -22,7 +22,7 @@ export const IntroSection = () => {
 					Or more specifically, Vim Motions.
 				</h3>
 
-				<HeroNextPageButtons />
+				<HeroNextPageButtons live={isInView} />
 			</div>
 
 			<div className="flex w-full items-center justify-center">

@@ -3,17 +3,15 @@ import { PressableIconButton, PressableKeyButton } from "@/components/button/pre
 import { ArrowBigDown } from "lucide-react"
 import { useEffect, useState } from "react";
 
-export const HeroNextPageButtons = () => {
+export const HeroNextPageButtons = ({ live }: { live: boolean }) => {
 	const [hasPressedJButton, setHasPressedJButton] = useState(false);
 	const [hasPressedDownButton, setHasPressedDownButton] = useState(false);
-	const [hasScrolled, setHasScrolled] = useState(false);
 
 	useEffect(() => {
-		if ((hasPressedJButton || hasPressedDownButton) && !hasScrolled) {
+		if ((hasPressedJButton || hasPressedDownButton) && live) {
 			const nextSection = document.getElementById("02-hjkl")
 			if (nextSection) {
 				nextSection.scrollIntoView({ behavior: "smooth" })
-				setHasScrolled(true)
 			}
 		}
 	}, [hasPressedJButton, hasPressedDownButton])
