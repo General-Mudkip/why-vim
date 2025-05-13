@@ -29,7 +29,7 @@ export const HeroNextPageButtons = () => {
 				<span>or</span>
 				<PressableIconButton
 					activatorKeys={["ArrowDown"]}
-					displayIcon={<ArrowBigDown />}
+					displayIcon={<ArrowBigDown strokeWidth={1.5} />}
 					stateController={setHasPressedDownButton}
 				/>
 			</div>

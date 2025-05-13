@@ -28,7 +28,6 @@ export const IntroSection = () => {
 			<div className="flex w-full items-center justify-center">
 				<img src="/vim-logo.svg" className="w-[55%]" />
 			</div>
-
 		</section>
 	)
 }
