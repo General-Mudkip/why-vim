@@ -10,6 +10,7 @@ export type ButtonVariant =
 	| "success"
 	| "default_for_game" // TODO: Come up with a more elegant solution?
 	| "to_be_pressed"
+	| "wrong"
 	| "pulsing";
 
 type PressableButtonProps = {
@@ -43,6 +44,7 @@ const pressableButtonVariants = cva(
 				default_for_game: "border-2 border-neutral-800 shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)]",
 				pulsing: "border-2 animate-bg-pulse border-neutral-800 bg-neutral-100 shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)]",
 				success: "border-2 border-green-800 bg-green-200 text-green-900 shadow-[inset_0_-3px_0_0_rgba(0,100,0,0.2)]",
+				wrong: "border-2 border-dashed bg-red-100 text-red-800 border-red-800 transform shadow-[inset_0_-3px_0_0_rgba(100,0,0,0.2)]",
 				to_be_pressed: "border-2 border-dashed border-orange-800 text-orange-900 bg-orange-200 shadow-[inset_0_-4px_0_0_rgba(50,0,0,0.2)]"
 			},
 			size: {
@@ -73,21 +75,30 @@ const pressableButtonVariants = cva(
 				active: true,
 				variant: "default",
 				size: "key",
-				class: "shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] bg-neutral-200",
+				class: "shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] transform bg-neutral-200",
 			},
 			{
 				active: true,
 				variant: "to_be_pressed",
-				class: "border-2 border-green-800 bg-green-200 text-green-900 shadow-[inset_0_-3px_0_0_rgba(0,100,0,0.2)] translate-y-0.5 border-solid",
+				size: "default",
+				class: "border-2 justify-center border-green-800 bg-green-200 text-green-900 shadow-[inset_0_-3px_0_0_rgba(0,100,0,0.2)] transform translate-y-0.5 border-solid",
 			},
 			{
 				active: true,
 				variant: "default_for_game",
+				size: "default",
 				class: "shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] bg-red-100 text-red-800 border-red-800 transform translate-y-0.5",
 			},
 			{
 				active: true,
+				variant: "wrong",
+				size: "default",
+				class: "shadow-[inset_0_0px_0_0_rgba(0,0,0,0.2)] transform translate-y-0.5",
+			},
+			{
+				active: true,
 				variant: "success",
+				size: "default",
 				class: "shadow-[inset_0_0px_0_0_rgba(0,200,0,0.2)] bg-green-300/70 translate-y-0.5"
 			}
 		],

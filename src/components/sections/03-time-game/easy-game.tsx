@@ -14,7 +14,7 @@ function delay(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export const EnterGame = ({ live }: { live: boolean }) => {
+export const EasyEnterGame = ({ live }: { live: boolean }) => {
 	const [score, setScore] = useState(0)
 	const [maxScore, setMaxScore] = useState(0)
 
@@ -45,23 +45,27 @@ export const EnterGame = ({ live }: { live: boolean }) => {
 			setIsWaiting(false)
 		}
 
-		// If the currently pressed keys has the the key to press, and given
-		// we're not already waiting for a new key to be set, increment
-		// the score and set a new key to be pressed.
-		if (pressedKeys.has(toPressKey) && !isWaiting) {
-			setScore((score) => score + 1)
-			if (score + 1 > maxScore) {
-				setMaxScore(score + 1)
+		// Don't run the game if the game isn't live. In the 03 section,
+		// it's if the section is inView.
+		if (live) {
+			// If the currently pressed keys has the the key to press, and given
+			// we're not already waiting for a new key to be set, increment
+			// the score and set a new key to be pressed.
+			if (pressedKeys.has(toPressKey) && !isWaiting) {
+				setScore((score) => score + 1)
+				if (score + 1 > maxScore) {
+					setMaxScore(score + 1)
+				}
+				setNewKey()
+			} else if (pressedKeys.size > 0) {
+				setScore(0)
 			}
-			setNewKey()
-		} else if (pressedKeys.size > 0) {
-			setScore(0)
 		}
 	}, [pressedKeys])
 
 	return (
-		<>
-			<h3 className="-mb-8">
+		<div className="text-center">
+			<h3 className="pb-3">
 				Score: {score} | Max Score: {maxScore}
 			</h3>
 			<div className="flex flex-row gap-x-4">
@@ -69,7 +73,7 @@ export const EnterGame = ({ live }: { live: boolean }) => {
 					variant={
 						toPressKey == "h" ? (isWaiting ? "success" : "to_be_pressed") : "default_for_game"
 					}
-					activatorKeys={["h", "ArrowLeft"]}
+					activatorKeys={["h"]}
 					displayKey="H"
 				/>
 
@@ -77,7 +81,7 @@ export const EnterGame = ({ live }: { live: boolean }) => {
 					variant={
 						toPressKey == "j" ? (isWaiting ? "success" : "to_be_pressed") : "default_for_game"
 					}
-					activatorKeys={["j", "ArrowDown"]}
+					activatorKeys={["j"]}
 					displayKey="J"
 				/>
 
@@ -85,7 +89,7 @@ export const EnterGame = ({ live }: { live: boolean }) => {
 					variant={
 						toPressKey == "k" ? (isWaiting ? "success" : "to_be_pressed") : "default_for_game"
 					}
-					activatorKeys={["k", "ArrowUp"]}
+					activatorKeys={["k"]}
 					displayKey="K"
 				/>
 
@@ -93,10 +97,10 @@ export const EnterGame = ({ live }: { live: boolean }) => {
 					variant={
 						toPressKey == "l" ? (isWaiting ? "success" : "to_be_pressed") : "default_for_game"
 					}
-					activatorKeys={["l", "ArrowRight"]}
+					activatorKeys={["l"]}
 					displayKey="L"
 				/>
 			</div>
-		</>
+		</div>
 	)
 }
