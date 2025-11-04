@@ -1,35 +1,30 @@
 "use client";
 
-import {
-	createContext,
-	useContext,
-	useState,
-	type ReactNode,
-} from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 interface SectionContextProps {
-	currentSection: string;
-	setCurrentSection: (section: string) => void;
+    currentSection: string;
+    setCurrentSection: (section: string) => void;
 }
 
-const SectionContext = createContext<SectionContextProps | undefined>(undefined);
+const SectionContext = createContext<SectionContextProps | undefined>(
+    undefined,
+);
 
-export const SectionProvider = ({ children, }: { children: ReactNode; }) => {
-	const [currentSection, setCurrentSection] = useState("01 - Intro");
+export const SectionProvider = ({ children }: { children: ReactNode }) => {
+    const [currentSection, setCurrentSection] = useState("01 - Intro");
 
-	return (
-		<SectionContext.Provider value={{ currentSection, setCurrentSection }}>
-			{children}
-		</SectionContext.Provider>
-	);
+    return (
+        <SectionContext.Provider value={{ currentSection, setCurrentSection }}>
+            {children}
+        </SectionContext.Provider>
+    );
 };
 
 export const useSection = () => {
-	const context = useContext(SectionContext);
-	if (!context) {
-		throw new Error(
-			"useSection must be used within a SectionProvider"
-		);
-	}
-	return context;
+    const context = useContext(SectionContext);
+    if (!context) {
+        throw new Error("useSection must be used within a SectionProvider");
+    }
+    return context;
 };

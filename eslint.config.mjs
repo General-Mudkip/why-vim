@@ -1,6 +1,7 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,17 +12,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    // enable the plugin so we can tweak its rules
-    plugins: ["eslint-comments"],
-    rules: {
-      // turn off warnings about unused eslint-disable directives
-      "eslint-comments/no-unused-disable": "off",
-      // if you also see “no-unused-enable” or “no-unused-remark” errors:
-      "eslint-comments/no-unused-enable": "off",
-      "eslint-comments/no-unused-remark": "off",
-    },
-  },
+  eslintPluginPrettierRecommended,
 ];
 
 export default eslintConfig;
