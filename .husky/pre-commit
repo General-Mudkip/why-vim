@@ -1,2 +1,3 @@
 pnpm exec eslint --fix .
 pnpm exec prettier . --write
+pnpm build --no-lint
