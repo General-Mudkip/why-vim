@@ -90,8 +90,8 @@ export const HardEnterGame = ({ live }: { live: boolean }) => {
                             gotItWrong
                                 ? "wrong"
                                 : isWaiting
-                                    ? "success"
-                                    : "to_be_pressed"
+                                  ? "success"
+                                  : "to_be_pressed"
                         }
                         activatorKeys={["h"]}
                         displayIcon={<ArrowBigLeft strokeWidth={1.5} />}
@@ -104,8 +104,8 @@ export const HardEnterGame = ({ live }: { live: boolean }) => {
                             gotItWrong
                                 ? "wrong"
                                 : isWaiting
-                                    ? "success"
-                                    : "to_be_pressed"
+                                  ? "success"
+                                  : "to_be_pressed"
                         }
                         activatorKeys={["j"]}
                         displayIcon={<ArrowBigDown strokeWidth={1.5} />}
@@ -118,8 +118,8 @@ export const HardEnterGame = ({ live }: { live: boolean }) => {
                             gotItWrong
                                 ? "wrong"
                                 : isWaiting
-                                    ? "success"
-                                    : "to_be_pressed"
+                                  ? "success"
+                                  : "to_be_pressed"
                         }
                         activatorKeys={["k"]}
                         displayIcon={<ArrowBigUp strokeWidth={1.5} />}
@@ -132,8 +132,8 @@ export const HardEnterGame = ({ live }: { live: boolean }) => {
                             gotItWrong
                                 ? "wrong"
                                 : isWaiting
-                                    ? "success"
-                                    : "to_be_pressed"
+                                  ? "success"
+                                  : "to_be_pressed"
                         }
                         activatorKeys={["l"]}
                         displayIcon={<ArrowBigRight strokeWidth={1.5} />}

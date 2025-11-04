@@ -10,7 +10,7 @@ export const TimeGame = () => {
     const sectionName = "03 - HJKL Game";
 
     const { ref, isInView } = useInView(0.5);
-    const { currentSection, setCurrentSection } = useSection();
+    const { setCurrentSection } = useSection();
 
     useEffect(() => {
         if (isInView) {
@@ -39,7 +39,7 @@ export const TimeGame = () => {
                     size={"key"}
                 />{" "}
                 key. <br />
-                I'll highlight a random key, and you need to enter it.
+                I&apos;ll highlight a random key, and you need to enter it.
             </p>
 
             <EnterGameSelector live={isInView} />
