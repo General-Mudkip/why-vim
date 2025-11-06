@@ -2,7 +2,10 @@
 import { useInView } from "@/components/hooks/useInView";
 import { HeroNextPageButtons } from "./next-page-buttons";
 import { useEffect } from "react";
-import { useSection } from "@/components/contexts/SectionContext";
+import {
+    SectionName,
+    useSection,
+} from "@/components/hooks/contexts/SectionContext";
 
 export const IntroSection = () => {
     const { ref, isInView } = useInView(0.5);
@@ -10,7 +13,7 @@ export const IntroSection = () => {
 
     useEffect(() => {
         if (isInView) {
-            setCurrentSection("01 - Intro");
+            setCurrentSection(SectionName.Intro);
         }
     }, [isInView, setCurrentSection]);
 
@@ -28,7 +31,7 @@ export const IntroSection = () => {
                     Or more specifically, Vim Motions.
                 </h3>
 
-                <HeroNextPageButtons live={isInView} />
+                <HeroNextPageButtons enabled={isInView} />
             </div>
 
             <div className="flex w-full items-center justify-center">

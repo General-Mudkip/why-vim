@@ -24,7 +24,7 @@ type PressableButtonProps = {
     activatedVariant?: ButtonVariant;
 
     // Should the button be listening for inputs
-    live?: boolean;
+    enabled?: boolean;
 };
 
 export type PressableKeyButtonProps = PressableButtonProps & {
@@ -114,19 +114,23 @@ export const PressableKeyButton = ({
     variant,
     size,
     activatorKeys,
-    stateController,
     displayKey,
     activatedVariant,
-    live = true,
+    stateController,
+    enabled = true,
 }: VariantProps<typeof pressableButtonVariants> & PressableKeyButtonProps) => {
     const [hasBeenPressed, setHasBeenPressed] = useState(false);
-    const keyIsActive = useKeyPress(activatorKeys, stateController);
+    const keyIsActive = useKeyPress({
+        targetKeys: activatorKeys,
+        setParentState: stateController,
+        enabled,
+    });
 
     useEffect(() => {
-        if (keyIsActive && !hasBeenPressed && live) {
+        if (keyIsActive && !hasBeenPressed && enabled) {
             setHasBeenPressed(true);
         }
-    }, [keyIsActive, hasBeenPressed, live]);
+    }, [keyIsActive, hasBeenPressed, enabled]);
 
     const effectiveVariant =
         hasBeenPressed && activatedVariant ? activatedVariant : variant;
@@ -153,13 +157,17 @@ export const PressableIconButton = ({
     stateController,
     displayIcon,
     activatedVariant,
-    live = true,
+    enabled = true,
 }: VariantProps<typeof pressableButtonVariants> & PressableIconButtonProps) => {
     const [hasBeenPressed, setHasBeenPressed] = useState(false);
-    const keyIsActive = useKeyPress(activatorKeys, stateController);
+    const keyIsActive = useKeyPress({
+        targetKeys: activatorKeys,
+        setParentState: stateController,
+        enabled,
+    });
 
     useEffect(() => {
-        if (keyIsActive && !hasBeenPressed && live) {
+        if (keyIsActive && !hasBeenPressed && enabled) {
             setHasBeenPressed(true);
         }
     }, [keyIsActive, hasBeenPressed]);
@@ -187,13 +195,16 @@ export const PressableSpaceButton = ({
     stateController,
     variant,
     activatedVariant,
-    live,
+    enabled,
 }: VariantProps<typeof pressableButtonVariants> & PressableButtonProps) => {
     const [hasBeenPressed, setHasBeenPressed] = useState(false);
-    const keyIsActive = useKeyPress(activatorKeys, stateController);
+    const keyIsActive = useKeyPress({
+        targetKeys: activatorKeys,
+        setParentState: stateController,
+    });
 
     useEffect(() => {
-        if (keyIsActive && !hasBeenPressed && live) {
+        if (keyIsActive && !hasBeenPressed && enabled) {
             setHasBeenPressed(true);
         }
     }, [keyIsActive, hasBeenPressed]);

@@ -3,79 +3,23 @@ import {
     PressableKeyButton,
     PressableIconButton,
     PressableSpaceButton,
-} from "@/components/button/pressable-button";
-import { useKeyPressContext } from "@/components/contexts/KeyPressContext";
-import { useSection } from "@/components/contexts/SectionContext";
-import { useInView } from "@/components/hooks/useInView";
+} from "@/components/common/pressable-button";
 import {
     ArrowBigDown,
     ArrowBigLeft,
     ArrowBigRight,
     ArrowBigUp,
 } from "lucide-react";
-import { motion, useAnimationControls } from "motion/react";
-import { useEffect, useMemo, useState } from "react";
+import { motion } from "motion/react";
+import { useHJKLSection } from "./useHJKLSection";
 
 export const HJKLSection = () => {
-    const sectionName = "02 - HJKL";
-
-    const { ref, isInView } = useInView(0.5);
-    const { currentSection, setCurrentSection } = useSection();
-    const { pressedKeys } = useKeyPressContext();
-    const [sectionGoalKeys, setSectionGoalKeys] = useState(new Set<string>());
-    const continueButtonControls = useAnimationControls();
-
-    const [hasPassedGoal, setHasPassedGoal] = useState(false);
-    const [continueButtonPressed, setContinueButtonPressed] = useState(false);
-
-    const targetKeys = useMemo(() => new Set(["h", "j", "k", "l"]), []);
-
-    useEffect(() => {
-        if (isInView) {
-            setCurrentSection(sectionName);
-        }
-    }, [isInView]);
-
-    useEffect(() => {
-        if (currentSection === sectionName && !hasPassedGoal) {
-            setSectionGoalKeys((prevKeys) => {
-                const updatedKeys = new Set(prevKeys);
-
-                for (const key of targetKeys) {
-                    if (pressedKeys.has(key)) {
-                        updatedKeys.add(key);
-                    }
-                }
-
-                if (updatedKeys.isSupersetOf(targetKeys)) {
-                    setHasPassedGoal(true);
-                }
-                return updatedKeys;
-            });
-        }
-    }, [pressedKeys, currentSection, hasPassedGoal, sectionName, targetKeys]);
-
-    useEffect(() => {
-        if (hasPassedGoal) {
-            continueButtonControls.start({
-                opacity: [0, 1],
-                y: [-5, 0],
-                transition: {
-                    duration: 0.5,
-                    type: "spring",
-                },
-            });
-        }
-    }, [hasPassedGoal, continueButtonControls]);
-
-    useEffect(() => {
-        if (hasPassedGoal && isInView && continueButtonPressed) {
-            const nextSection = document.getElementById("03-time-game");
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    }, [continueButtonPressed, hasPassedGoal, isInView]);
+    const {
+        ref,
+        enableButtons,
+        continueButtonControls,
+        setContinueButtonPressed,
+    } = useHJKLSection();
 
     return (
         <section
@@ -130,25 +74,25 @@ export const HJKLSection = () => {
                         activatorKeys={["h", "ArrowLeft"]}
                         displayKey="H"
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableKeyButton
                         activatorKeys={["j", "ArrowDown"]}
                         displayKey="J"
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableKeyButton
                         activatorKeys={["k", "ArrowUp"]}
                         displayKey="K"
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableKeyButton
                         activatorKeys={["l", "ArrowRight"]}
                         displayKey="L"
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                 </div>
 
@@ -159,25 +103,25 @@ export const HJKLSection = () => {
                         activatorKeys={["h", "ArrowLeft"]}
                         displayIcon={<ArrowBigLeft strokeWidth={1.5} />}
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableIconButton
                         activatorKeys={["j", "ArrowDown"]}
                         displayIcon={<ArrowBigDown strokeWidth={1.5} />}
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableIconButton
                         activatorKeys={["k", "ArrowUp"]}
                         displayIcon={<ArrowBigUp strokeWidth={1.5} />}
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                     <PressableIconButton
                         activatorKeys={["l", "ArrowRight"]}
                         displayIcon={<ArrowBigRight strokeWidth={1.5} />}
                         activatedVariant="success"
-                        live={isInView}
+                        enabled={enableButtons}
                     />
                 </div>
             </div>

@@ -21,6 +21,7 @@ export const KeyPressProvider = ({ children }: { children: ReactNode }) => {
     const [pressedKeys, setPressedKeys] = useState(new Set<string>());
 
     const handleKeyDown = useCallback((keyEvent: KeyboardEvent) => {
+        // Prevent up/down/space keys from scrolling the page
         if (
             keyEvent.key === " " ||
             keyEvent.key === "ArrowDown" ||

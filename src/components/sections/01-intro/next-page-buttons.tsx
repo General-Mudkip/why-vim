@@ -2,22 +2,22 @@
 import {
     PressableIconButton,
     PressableKeyButton,
-} from "@/components/button/pressable-button";
+} from "@/components/common/pressable-button";
 import { ArrowBigDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export const HeroNextPageButtons = ({ live }: { live: boolean }) => {
+export const HeroNextPageButtons = ({ enabled }: { enabled: boolean }) => {
     const [hasPressedJButton, setHasPressedJButton] = useState(false);
     const [hasPressedDownButton, setHasPressedDownButton] = useState(false);
 
     useEffect(() => {
-        if ((hasPressedJButton || hasPressedDownButton) && live) {
+        if ((hasPressedJButton || hasPressedDownButton) && enabled) {
             const nextSection = document.getElementById("02-hjkl");
             if (nextSection) {
                 nextSection.scrollIntoView({ behavior: "smooth" });
             }
         }
-    }, [hasPressedJButton, hasPressedDownButton, live]);
+    }, [hasPressedJButton, hasPressedDownButton, enabled]);
 
     return (
         <div className="flex w-full flex-col items-center justify-center pt-8">

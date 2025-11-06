@@ -1,6 +1,6 @@
 "use client";
-import { PressableKeyButton } from "@/components/button/pressable-button";
-import { useKeyPressContext } from "@/components/contexts/KeyPressContext";
+import { PressableKeyButton } from "@/components/common/pressable-button";
+import { useKeyPressContext } from "@/components/hooks/contexts/KeyPressContext";
 import { useEffect, useState } from "react";
 
 function getDelayTime(score: number): number {

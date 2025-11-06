@@ -1,13 +1,16 @@
 "use client";
 
-import { useSection } from "@/components/contexts/SectionContext";
+import {
+    SectionName,
+    useSection,
+} from "@/components/hooks/contexts/SectionContext";
 import { useInView } from "@/components/hooks/useInView";
-import { PressableKeyButton } from "@/components/button/pressable-button";
+import { PressableKeyButton } from "@/components/common/pressable-button";
 import { useEffect } from "react";
 import { EnterGameSelector } from "./game-selector";
 
 export const TimeGame = () => {
-    const sectionName = "03 - HJKL Game";
+    const sectionName = SectionName.TimeGame;
 
     const { ref, isInView } = useInView(0.5);
     const { setCurrentSection } = useSection();

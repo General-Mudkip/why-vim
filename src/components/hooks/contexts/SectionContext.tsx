@@ -2,9 +2,16 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
+export enum SectionName {
+    Intro = "01 - Intro",
+    HJKL = "02 - HJKL",
+    TimeGame = "03 - Time Game",
+    TerminalEmulatorDemo = "04 - Terminal Emulator Demo",
+}
+
 interface SectionContextProps {
-    currentSection: string;
-    setCurrentSection: (section: string) => void;
+    currentSection: SectionName;
+    setCurrentSection: (section: SectionName) => void;
 }
 
 const SectionContext = createContext<SectionContextProps | undefined>(
@@ -12,7 +19,7 @@ const SectionContext = createContext<SectionContextProps | undefined>(
 );
 
 export const SectionProvider = ({ children }: { children: ReactNode }) => {
-    const [currentSection, setCurrentSection] = useState("01 - Intro");
+    const [currentSection, setCurrentSection] = useState(SectionName.Intro);
 
     return (
         <SectionContext.Provider value={{ currentSection, setCurrentSection }}>

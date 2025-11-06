@@ -1,9 +1,6 @@
 "use client";
-import {
-    PressableIconButton,
-    PressableKeyButton,
-} from "@/components/button/pressable-button";
-import { useKeyPressContext } from "@/components/contexts/KeyPressContext";
+import { PressableIconButton } from "@/components/common/pressable-button";
+import { useKeyPressContext } from "@/components/hooks/contexts/KeyPressContext";
 import {
     ArrowBigDown,
     ArrowBigLeft,
